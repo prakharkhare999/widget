@@ -1,0 +1,71 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Widgets</title>
+     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+     <style>
+         
+     </style>
+ </head>
+ <body class="bg-gray-100">
+
+     <div class="grid grid-cols-2 gap-6 p-6">
+        
+         <div class="hidden lg:block"></div>
+
+        
+         <div class="space-y-6">
+             
+             <div class="bg-white shadow-lg rounded-lg p-4">
+                 <div class="flex border-b border-gray-200">
+                     <button id="aboutMeTab" class="tab-button py-2 px-4 text-blue-600 border-b-2 border-blue-600">About Me</button>
+                     <button id="experiencesTab" class="tab-button py-2 px-4">Experiences</button>
+                     <button id="recommendedTab" class="tab-button py-2 px-4">Recommended</button>
+                 </div>
+                 <div id="tabContent" class="mt-4">
+                   
+                 </div>
+             </div>
+
+           
+             <div class="bg-white shadow-lg rounded-lg p-4">
+                 <div class="flex justify-between items-center mb-4">
+                     <h2 class="text-lg font-semibold">Gallery</h2>
+                     <button id="addImageBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Add Image</button>
+                 </div>
+                 <div id="gallery" class="grid grid-cols-3 gap-4">
+                     
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <script>
+          document.getElementById('aboutMeTab').addEventListener('click', function() {
+             showTabContent('About Me');
+         });
+         document.getElementById('experiencesTab').addEventListener('click', function() {
+             showTabContent('Experiences');
+         });
+         document.getElementById('recommendedTab').addEventListener('click', function() {
+             showTabContent('Recommended');
+         });
+
+         function showTabContent(tab) {
+             document.getElementById('tabContent').innerText = tab + ' content goes here';
+             document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('border-blue-600', 'text-blue-600'));
+             document.querySelector(`[id$="${tab.toLowerCase()}Tab"]`).classList.add('border-blue-600', 'text-blue-600');
+         }
+
+        
+         document.getElementById('addImageBtn').addEventListener('click', function() {
+             const gallery = document.getElementById('gallery');
+             const newImage = document.createElement('div');
+             newImage.className = 'w-full h-32 bg-gray-200 rounded-lg';
+             gallery.appendChild(newImage);
+         });
+     </script>
+ </body>
+ </html>
